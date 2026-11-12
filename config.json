@@ -1,0 +1,14 @@
+{
+  "club_slug": "horsley-lodge-golf-club",
+  "club_id": 19424,
+  "course_id": 27036,
+  "affiliation_type_id": 132478,
+  "holes": 18,
+  "days_ahead": 15,
+  "timezone": "Europe/London",
+  "interval_seconds": 120,
+  "quiet_hours": [22, 7],
+  "watch": {
+    "Sat": { "earliest": "09:00", "latest": "10:00", "players": 2 }
+  }
+}
