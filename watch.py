@@ -31,17 +31,22 @@ def mins(hhmm):
     return int(h) * 60 + int(m)
 
 
+def window(d):
+    """One-off date windows (config "dates") override the weekly ones ("watch")."""
+    return CFG.get("dates", {}).get(d.isoformat()) or CFG["watch"].get(d.strftime("%a"))
+
+
 def watch_dates():
     today = datetime.now(TZ).date()
     for i in range(CFG["days_ahead"] + 1):
         d = today + timedelta(days=i)
-        if d.strftime("%a") in CFG["watch"]:
+        if window(d):
             yield d
 
 
 def free_times(d):
     """Free start times in the watch window for this date, or None if not bookable yet."""
-    w = CFG["watch"][d.strftime("%a")]
+    w = window(d)
     affs = "".join(f"&affiliation_type_ids%5B%5D={CFG['affiliation_type_id']}"
                    for _ in range(w["players"]))
     url = (API.format(club=CFG["club_id"]) + f"?date={d.isoformat()}&course_id={CFG['course_id']}"
