@@ -11,13 +11,7 @@
     22,
     7
   ],
-  "watch": {
-    "Sat": {
-      "earliest": "09:00",
-      "latest": "10:00",
-      "players": 2
-    }
-  },
+  "watch": {},
   "dates": {
     "2026-11-21": {
       "earliest": "09:00",
